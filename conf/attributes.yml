@@ -3,6 +3,7 @@ cn:
     display_name: "Display Name"
     type: string
     weight: 30
+    key: True
     autofill: 
         function: lcDisplayName
         args:
@@ -44,73 +45,31 @@ email:
     backends:
         ldap: mail
 #        ad: mail
-uid:
-    description: "UID of the user"
-    display_name: "UID"
+descr:
+    description: "Description"
+    display_name: "Descr"
     search_displayed: True
-    key: True
     type: string
     weight: 50
-    autofill: 
-        function: lcUid
-        args:
-            - $first-name
-            - $name
-            - '10000'
-            - '40000'
     backends:
-        ldap: uid
+        ldap: description
 #        ad: sAMAccountName
-uidNumber:
-    description: "User ID Number of the user"
-    display_name: "UID Number"
+employeeType:
+    description: "employeeType"
+    display_name: "Employee Type"
     weight: 60
-    type: int
-    autofill: 
-        function: lcUidNumber
-        args:
-            - $first-name
-            - $name
-            - '10000'
-            - '40000'
-    backends:
-        ldap: uidNumber
-#        ad: uidNumber
-gidNumber:
-    description: "Group ID Number of the user"
-    display_name: "GID Number"
-    weight: 70
-    type: int
-    default: '10000'
-    backends:
-        ldap: gidNumber
-#        ad: gidNumber
-shell:
-    description: "Shell of the user"
-    display_name: "Shell"
-    weight: 80
-    self: True
-    type: stringlist
-    values:
-        - /bin/bash
-        - /bin/zsh
-        - /bin/sh
-    backends:
-        ldap: loginShell
-#        ad: loginShell 
-home:
-    description: "Home user path"
-    display_name: "Home"
-    weight: 90
     type: string
-    autofill: 
-        function: lcHomeDir
-        args:
-            - $first-name
-            - $name
-            - /home/
     backends:
-        ldap: homeDirectory
+        ldap: employeeType
+#        ad: uidNumber
+title:
+    description: "Title"
+    display_name: "Title"
+    weight: 70
+    type: string
+    backends:
+        ldap: title
+
 #        ad: homeDirectory
 password:
     description: "Password of the user"
